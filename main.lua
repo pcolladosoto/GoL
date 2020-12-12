@@ -1,17 +1,18 @@
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1000
 
-GRID_X_DIM = 20
-GRID_Y_DIM = 12
+GRID_X_DIM = 100
+GRID_Y_DIM = 60
 
 X_STEP = SCREEN_WIDTH / GRID_X_DIM
 Y_STEP = SCREEN_HEIGHT / GRID_Y_DIM
 
-STEP_TIME = 0.5
+STEP_TIME = 0.25
 
 DBG = false
 
 function draw_grid()
+    love.graphics.setColor(1, 1, 0, 1)
     for i = 0, GRID_X_DIM, 1 do
         love.graphics.line(i * X_STEP, 0, i * X_STEP, SCREEN_HEIGHT)
     end
@@ -21,6 +22,7 @@ function draw_grid()
 end
 
 function draw_cells()
+    love.graphics.setColor(1, 0, 1, 1)
     for i, row in ipairs(cells) do
         for j, state in ipairs(row) do
             if state == 1 then

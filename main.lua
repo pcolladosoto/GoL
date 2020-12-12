@@ -9,6 +9,8 @@ Y_STEP = SCREEN_HEIGHT / GRID_Y_DIM
 
 STEP_TIME = 0.5
 
+DBG = false
+
 function draw_grid()
     for i = 0, GRID_X_DIM, 1 do
         love.graphics.line(i * X_STEP, 0, i * X_STEP, SCREEN_HEIGHT)
@@ -56,7 +58,8 @@ function update_state()
     end
 
     cells = table_copy(cpy)
-    print_grid(cells)
+
+    if DBG then print_grid(cells) end
 end
 
 function update_cell(i, j, state)
@@ -153,7 +156,7 @@ function love.load(arg)
         end
     end
     init_glider()
-    print_grid(cells)
+    if DBG then print_grid(cells) end
     sleep_timer = 0
 end
 
